@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     GraphAdjList<int> g(10);
-    g.addEdge(9, 2);
+    g.addEdge(6, 2);
     g.addEdge(2, 8);
     g.addEdge(3, 4);
     g.addEdge(1, 7);

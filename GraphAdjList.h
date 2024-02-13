@@ -19,8 +19,15 @@ public:
 
     void addEdge(T x, T y)
     {
-        graph[x].push_back(y);
-        graph[y].push_back(x);
+        if (x < vertices && y < vertices)
+        {
+            graph[x].push_back(y);
+            graph[y].push_back(x);
+        }
+        else
+        {
+            cout << "Vertex index out of bounds" << endl;
+        }
     }
     void printAdjList()
     {
