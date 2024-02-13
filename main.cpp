@@ -18,4 +18,9 @@ int main()
     g.addEdge(0, 1);
     g.addEdge(5, 0);
     g.printAdjList();
+    cout << "DFS: ";
+    g.DFS(0);
+    cout << endl;
+    cout << "BFS: ";
+    g.BFS(0);
 }

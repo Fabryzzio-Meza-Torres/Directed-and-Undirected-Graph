@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Doubly_Linked_List.h"
+#include <vector>
+#include <queue>
 using namespace std;
 
 template <typename T>
@@ -38,6 +40,49 @@ public:
                 cout << j << ",";
             }
             cout << endl;
+        }
+    }
+
+    void DFSHelper(int v, vector<bool> &visited)
+    {
+        visited[v] = true;
+        cout << v << " ";
+        for (T i : graph[v])
+        {
+            if (!visited[i])
+            {
+                DFSHelper(i, visited);
+            }
+        }
+    }
+
+    void DFS(int startVertex)
+    {
+        vector<bool> visited(vertices, false);
+        DFSHelper(startVertex, visited);
+    }
+
+    void BFS(int startVertex)
+    {
+        vector<bool> visited(vertices, false);
+        queue<T> q;
+        visited[startVertex] = true;
+        q.push(startVertex);
+
+        while (!q.empty())
+        {
+            T current = q.front();
+            q.pop();
+            cout << current << " ";
+
+            for (T i : graph[current])
+            {
+                if (!visited[i])
+                {
+                    visited[i] = true;
+                    q.push(i);
+                }
+            }
         }
     }
 };
