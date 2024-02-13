@@ -5,17 +5,22 @@
 using namespace std;
 
 template <typename T>
-class GraphAdjList
+class Directed_Graph
 {
 private:
     int vertices;
     DoublyLinkedList<T> *graph;
 
 public:
-    GraphAdjList(int V)
+    Directed_Graph(int V)
     {
         vertices = V;
         graph = new DoublyLinkedList<T>[V];
+    }
+
+    ~Directed_Graph()
+    {
+        delete[] graph;
     }
 
     void addEdge(T x, T y)
@@ -23,7 +28,6 @@ public:
         if (x < vertices && y < vertices)
         {
             graph[x].push_back(y);
-            graph[y].push_back(x);
         }
         else
         {
@@ -84,5 +88,10 @@ public:
                 }
             }
         }
+    }
+
+    void clear()
+    {
+        delete[] graph;
     }
 };
