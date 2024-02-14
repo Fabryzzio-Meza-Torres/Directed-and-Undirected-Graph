@@ -3,6 +3,7 @@
 #include "Doubly_Linked_List.h"
 #include "Undirected_Graph.h"
 #include "Directed_Graph.h"
+#include "Adjancency_Matrix_Graph.h"
 using namespace std;
 
 int main()
@@ -46,4 +47,32 @@ int main()
     cout << endl;
     cout << "BFS: ";
     directed.BFS(0);
+
+    cout << endl;
+    cout << endl
+         << "Adjancency_Matrix_Graph" << endl;
+    Node node1(0, 0);
+    Node node2(1, 0);
+    Node node3(2, 0);
+    Node node4(3, 0);
+
+    Edge edge1(node1, node2);
+    Edge edge2(node2, node3);
+    Edge edge3(node3, node4);
+    Edge edge4(node4, node1);
+
+    vector<Node *> vertices = {&node1, &node2, &node3, &node4};
+    vector<Edge *> edges = {&edge1, &edge2, &edge3, &edge4};
+
+    Graph graph(vertices, edges);
+
+    cout << "BFS starting from vertex 0: ";
+    BFS(graph, 0);
+    cout << endl;
+
+    cout << "DFS  starting from vertex 0: ";
+    DFS(graph, 0);
+    cout << endl;
+
+    return 0;
 }
